@@ -131,6 +131,8 @@ def formatter(message):
     message_text = re.sub('<@[A-Z0-9]{11}>', id2name, message_text)
     # replace &gt; to angle bracket
     message_text = re.sub('&gt;', '>', message_text)
+    # replace one asteriks to two
+    message_text = re.sub(r'\*', r'**', message_text)
     # convert hyperlinks to markdown format
     if re.search(r'(?<=\<)(.*)\|(.*)(?<!\>)\>', message_text) is not None:
         url = re.search(r'(?<=\<)(.*)\|(.*)(?<!\>)\>', message_text).group(1)
