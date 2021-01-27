@@ -119,6 +119,9 @@ def id2name(matchobj):
 
 
 def formatter(message):
+    # filter bot's messages
+    if 'user' not in message.keys():
+        return
     # get message author name
     user_info = get_user_info_by_id(message['user'])
     if 'profile' in user_info['profile'].keys():
