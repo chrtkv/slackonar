@@ -174,7 +174,7 @@ def download_image(url):
     }
     for _attempt in range(100):
         try:
-            request = requests.get(url, headers=headers, allow_redirects=True, timeout=1)
+            request = requests.get(url, headers=headers, allow_redirects=True, timeout=10)
         except requests.exceptions.Timeout:
             continue
         break
@@ -203,7 +203,7 @@ if __name__ == '__main__':
         last_message_url = sys.argv[2].split('/')
         last_message_time = re.search('p([0-9].*)', last_message_url[5]).group(1)
 
-    USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36'
+    USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36' # noqa
     USER = os.environ['EMAIL']
     PASSWORD = os.environ['PASSWORD']
     WORKSPACE_URL = f'https://{workspace}'
